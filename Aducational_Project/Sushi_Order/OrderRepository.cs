@@ -27,11 +27,11 @@ namespace Sushi_Order
                 }
                 sushiOrder.Remove(sushi);
             }
-            catch (NullReferenceException ex)
+            catch (NullReferenceException)
             {
                 Console.WriteLine("You don't have eny sushi whith this name in order!");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine("You have more than 1 order this kind of sushi in your order.\nWhill delite the first of them!");
 
@@ -68,11 +68,11 @@ namespace Sushi_Order
 
                 exiStsushi.Things = sushi.Things;
             }
-            catch (NullReferenceException ex)
+            catch (NullReferenceException)
             {
                 Console.WriteLine("You don't have eny sushi whith this name in order!");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine("You have more than 1 order this kind of sushi in your order.\nPlease, delite the one of them!");
             }

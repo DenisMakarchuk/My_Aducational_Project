@@ -15,7 +15,11 @@ namespace Sushi_Order
 
             sushiRepository = Menu.MenuMaker(sushiRepository);
 
-            Speak.SushiInfo(sushiRepository.GetSushiByName("Philadelphia"));
+            OrderMaker newOrder = new OrderMaker();
+            newOrder.MakeOrder(sushiRepository);
+
+
+            //Speak.SushiInfo(sushiRepository.GetSushiByName("Philadelphia"));
 
             Console.Read();
         }
