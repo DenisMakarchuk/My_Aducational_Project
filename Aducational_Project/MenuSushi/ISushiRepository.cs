@@ -4,18 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sushi_Order
+namespace SushiMenu
 {
     interface ISushiRepository
     {
         void CreateSushi(Sushi sushi);
 
-        Sushi GetSushiByID(int id);
+        Sushi GetSushiByName(string name);
 
-        List<Sushi> Sushis();
+        List<Sushi> GetSushis();
 
-        Sushi UpdateSushi(Sushi moto);
+        void UpdateSushi(Sushi sushi);
 
-        void DeleteSushi(int id);
+        void DeleteSushi(string name);
     }
 }

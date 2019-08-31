@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,13 +9,6 @@ namespace SushiMenu
 {
     public class Menu
     {
-        static void Main(string[] args)
-        {
-            //SushiRepository sushiRepository = new SushiRepository();
-
-            //sushiRepository = MenuMaker(sushiRepository);
-        }
-
         public static SushiRepository MenuMaker(SushiRepository sushiRepository)
         {
             Sushi phila = new Sushi("Philadelphia", 250.0f, 12.50f, 8, true);

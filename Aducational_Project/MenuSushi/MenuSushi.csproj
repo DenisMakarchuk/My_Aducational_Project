@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8719715D-0140-439F-8661-EE25FBF85BF9}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Sushi_Order</RootNamespace>
-    <AssemblyName>Sushi_Order</AssemblyName>
+    <ProjectGuid>{CC89B41B-42B7-4DD6-8276-389E68E7613A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MenuSushi</RootNamespace>
+    <AssemblyName>MenuSushi</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,22 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IOrderRepository.cs" />
-    <Compile Include="Order.cs" />
-    <Compile Include="OrderMaker.cs" />
-    <Compile Include="OrderRepository.cs" />
+    <Compile Include="IMenu.cs" />
+    <Compile Include="ISushiRepository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Speak.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SushiMenu\SushiMenu.csproj">
-      <Project>{d3d395a9-0227-4ef8-afb3-c6e07219026d}</Project>
-      <Name>SushiMenu</Name>
-    </ProjectReference>
+    <Compile Include="Sushi.cs" />
+    <Compile Include="SushiRepository.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
