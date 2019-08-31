@@ -42,16 +42,27 @@ namespace Sushi_Order
 
         public void GetSushisInOrder()
         {
-            foreach (var item in sushiOrder)
+            Console.WriteLine("Whoud you like to see your order? (Yes/No)");
+            string yesNo = Console.ReadLine();
+
+            if (string.Equals(yesNo.ToUpper(), "yes".ToUpper()))
             {
-                if (item.HalfOrFull)
+
+                foreach (var item in sushiOrder)
                 {
-                    Console.WriteLine("{0}\t{1} g.\t{2: 0.00} BYN.\t{3} pieces\tYou can get a half.", item.Name, item.Weight, item.Cost, item.Things);
+                    if (item.HalfOrFull)
+                    {
+                        Console.WriteLine("{0}\t{1} g.\t{2: 0.00} BYN.\t{3} pieces\tYou can get a half.", item.Name, item.Weight, item.Cost, item.Things);
+                    }
+                    else
+                    {
+                        Console.WriteLine("{0}\t{1} g.\t{2: 0.00} BYN.\t{3} pieces\tYou can't get a half", item.Name, item.Weight, item.Cost, item.Things);
+                    }
                 }
-                else
-                {
-                    Console.WriteLine("{0}\t{1} g.\t{2: 0.00} BYN.\t{3} pieces\tYou can't get a half", item.Name, item.Weight, item.Cost, item.Things);
-                }
+            }
+            else
+            {
+                return;
             }
         }
 

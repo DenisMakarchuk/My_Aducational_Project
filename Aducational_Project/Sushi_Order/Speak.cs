@@ -35,8 +35,6 @@ namespace Sushi_Order
         {
             Console.WriteLine($"Here is our menu:");
             sushis.GetSushis();
-
-            Console.WriteLine("Which sushi whoud you like to order?");
         }
 
         public static void SushiInfo(Sushi sushi)
