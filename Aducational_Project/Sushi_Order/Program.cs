@@ -1,4 +1,5 @@
 ﻿using System;
+using SushiMenu;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,11 @@ namespace Sushi_Order
     {
         static void Main(string[] args)
         {
-            Speak.Hello();
+            SushiRepository sushiRepository = new SushiRepository();
+
+            sushiRepository = Menu.MenuMaker(sushiRepository);
+
+            Speak.SushiInfo(sushiRepository.GetSushiByName("Philadelphia"));
 
             Console.Read();
         }

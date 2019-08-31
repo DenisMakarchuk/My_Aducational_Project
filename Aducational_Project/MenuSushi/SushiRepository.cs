@@ -54,19 +54,9 @@ namespace SushiMenu
             }
         }
 
-        public void GetSushis()
+        public List<Sushi> GetSushis()
         {
-            foreach (var item in sushis)
-            {
-                if (item.HalfOrFull)
-                {
-                    Console.WriteLine("{0}\t{1} g.\t{2: 0.00} BYN.\t{3} pieces\tYou can get a half.", item.Name, item.Weight, item.Cost, item.Things);
-                }
-                else
-                {
-                    Console.WriteLine("{0}\t{1} g.\t{2: 0.00} BYN.\t{3} pieces\tYou can't get a half", item.Name, item.Weight, item.Cost, item.Things);
-                }
-            }
+            return sushis.Select(item => (Sushi)item).ToList();
         }
 
         public void UpdateSushi(Sushi sushi)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SushiMenu
 {
-    class Sushi : IMenu
+    public class Sushi : IMenu
     {
         public string Name { get ; set ; }
         public float Weight { get ; set ; }

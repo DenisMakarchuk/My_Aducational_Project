@@ -12,7 +12,7 @@ namespace SushiMenu
 
         Sushi GetSushiByName(string name);
 
-        List<Sushi> GetSushis();
+        void GetSushis();
 
         void UpdateSushi(Sushi sushi);
 
