@@ -15,6 +15,6 @@ namespace Sushi_Order
 
         void UpdateSushiInOrder(Sushi sushi);
 
-        void DeleteSushiFromOrder(string name);
+        void DeleteSushiFromOrder(int id);
     }
 }
