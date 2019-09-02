@@ -19,7 +19,7 @@ namespace Sushi_Order
             {
                 do
                 {
-                    Console.WriteLine($"How much of {sushi.Name} whoud you like add to order? You can get a helf of them.");
+                    Console.WriteLine($"How much of {sushi.Name} whoud you like add to order? You can get a helf of them.\nEnter the quantity of them & press 'enter'.");
                     amountOfSushi = Convert.ToSingle(Console.ReadLine());
 
                     if (amountOfSushi == 0)
@@ -41,7 +41,7 @@ namespace Sushi_Order
             {
                 do
                 {
-                    Console.WriteLine($"How much of {sushi.Name} whoud you like add to order? You can't get a helf of them.");
+                    Console.WriteLine($"How much of {sushi.Name} whoud you like add to order? You can't get a helf of them.\nEnter the quantity of them & press 'enter'.");
                     amountOfSushi = Convert.ToSingle(Console.ReadLine());
 
                     if (amountOfSushi == 0)
@@ -65,11 +65,11 @@ namespace Sushi_Order
             sushiOrder.Add(sushi);
         }
 
-        public void DeleteSushiFromOrder(string name)
+        public void DeleteSushiFromOrder(int id)
         {
             try
             {
-                var sushi = sushiOrder.SingleOrDefault(item => item.Name == name);
+                var sushi = sushiOrder.SingleOrDefault(item => item.Id == id);
                 if (sushi == null)
                 {
                     throw new NullReferenceException();
@@ -84,28 +84,37 @@ namespace Sushi_Order
             {
                 Console.WriteLine("You have more than 1 order this kind of sushi in your order.\nWhill delite the first of them!");
 
-                var sushi = sushiOrder.FirstOrDefault(item => item.Name == name);
+                var sushi = sushiOrder.FirstOrDefault(item => item.Id == id);
                 sushiOrder.Remove(sushi);
             }
         }
 
         public void GetSushisInOrder()
         {
-            Console.WriteLine("Whoud you like to see your order? (Yes/No)");
-            string yesNo = Console.ReadLine();
-
-            if (string.Equals(yesNo.ToUpper(), "yes".ToUpper()))
+            Console.WriteLine("Whoud you like to see your order?\nPress 'enter' if yes or something else if not.");
+            switch (Console.ReadKey(true).Key)
             {
+                case ConsoleKey.Enter:
+                    foreach (var item in sushiOrder)
+                    {
+                        Console.WriteLine("{0}\t{1}\t{2} g.\t{3: 0.00} BYN.\t{4} pieces", item.Id, item.Name, item.Weight, item.Cost, item.Things);
+                    }
+                    break;
+                default:
+                    return;
+            }
+            //if (string.Equals(yesNo.ToUpper(), "yes".ToUpper()))
+            //{
 
-                foreach (var item in sushiOrder)
-                {
-                    Console.WriteLine("{0}\t{1} g.\t{2: 0.00} BYN.\t{3} pieces.", item.Name, item.Weight, item.Cost, item.Things);
-                }
-            }
-            else
-            {
-                return;
-            }
+            //    foreach (var item in sushiOrder)
+            //    {
+            //        Console.WriteLine("{0}\t{1} g.\t{2: 0.00} BYN.\t{3} pieces.", item.Name, item.Weight, item.Cost, item.Things);
+            //    }
+            //}
+            //else
+            //{
+            //    return;
+            //}
         }
 
         public void UpdateSushiInOrder(Sushi sushi)

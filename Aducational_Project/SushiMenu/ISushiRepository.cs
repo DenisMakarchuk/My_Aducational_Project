@@ -10,12 +10,12 @@ namespace SushiMenu
     {
         void CreateSushi(Sushi sushi);
 
-        Sushi GetSushiByName(string name);
+        Sushi GetSushiById(int id);
 
         void GetSushis();
 
         void UpdateSushi(Sushi sushi);
 
-        void DeleteSushi(string name);
+        void DeleteSushi(int id);
     }
 }

@@ -9,7 +9,7 @@ namespace Sushi_Order
 {
     class Order
     {
-        //public static List<Sushi> OrderSushi = new List<Sushi>();
+        public DateTime dateTime = DateTime.Now.ToLocalTime();
 
         public int Id { get; set; }
 
@@ -28,7 +28,7 @@ namespace Sushi_Order
             Name = name;
             PhoneNumber = phone;
             Address = address;
-            OrderSushi = sushiOrder;
+            OrderSushi = new List<Sushi>(sushiOrder);
             TotalSum = sum;
         }
     }

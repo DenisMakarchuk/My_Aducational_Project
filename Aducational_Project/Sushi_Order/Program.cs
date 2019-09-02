@@ -17,7 +17,8 @@ namespace Sushi_Order
 
             OrderMaker newOrder = new OrderMaker();
             newOrder.MakeOrder(sushiRepository);
-            //newOrder.OrderBuilder(newOrder.orderRepository);
+
+            Order order = newOrder.OrderBuilder(newOrder.orderRepository);
 
 
 

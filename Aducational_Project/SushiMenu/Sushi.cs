@@ -8,6 +8,7 @@ namespace SushiMenu
 {
     public class Sushi : IMenu
     {
+        public int Id { get; set; }
         public string Name { get ; set ; }
         public float Weight { get ; set ; }
         public float Cost { get ; set ; }

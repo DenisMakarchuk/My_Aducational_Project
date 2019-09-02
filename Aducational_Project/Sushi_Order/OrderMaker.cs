@@ -20,29 +20,46 @@ namespace Sushi_Order
             {
                 do
                 {
-                    Console.WriteLine("Which sushi whoud you like to order?");
+                    Console.WriteLine("Which sushi whoud you like to order?\nEnter the ID number of kind of sushi & press 'enter' to add sushi or 'escape' if you whoudn't add something.");
 
-                    string nameSushiToOrder = Console.ReadLine();
-                    Sushi sushi = sushis.GetSushiByName(nameSushiToOrder);
-                    orderRepository.AddSushiInOrder(sushi);
+                    if (Console.ReadKey(true).Key != ConsoleKey.Escape)
+                    {
+                        try
+                        {
+                            int idSushiToOrder = Convert.ToInt32(Console.ReadLine());
+                        
+                        Sushi sushi = sushis.GetSushiById(idSushiToOrder);
+                        orderRepository.AddSushiInOrder(sushi);
+                        }
+                        catch
+                        {
+                            Console.WriteLine("You must enter the ID number of kind of sushi");
+                        }
+                    }
 
                     orderRepository.GetSushisInOrder();
                     Console.WriteLine("The order price is {0: 0.00}", SumCounter(orderRepository));
 
-                    Console.WriteLine("Enything else? (Yes / No)");
-                    string no = Console.ReadLine();
+                    Console.WriteLine("Enything else?\nPress 'escape' if not, 'delete' if you want to delete sushi from your order or something else if yes.");
 
-                    if (string.Equals(no.ToUpper(), "no".ToUpper()))
+                    if (Console.ReadKey(true).Key == ConsoleKey.Escape)
                     {
                         break;
+                    }
+                    else if (Console.ReadKey(true).Key == ConsoleKey.Delete)
+                    {
+                        Console.WriteLine("Enter the ID number of sushi which you whoud like to delete.");
+                        int id = Convert.ToInt32(Console.ReadLine());
+
+                        orderRepository.DeleteSushiFromOrder(id);
+                        orderRepository.GetSushisInOrder();
                     }
                 }
                 while (true);
 
-                Console.WriteLine("Whoud you like to finish your order ? (Yes / No)");
-                string yesNo = Console.ReadLine();
+                Console.WriteLine("Whoud you like to finish your order ?\nPress 'enter' if yes or something else if not");
 
-                if (string.Equals(yesNo.ToUpper(), "yes".ToUpper()))
+                if (Console.ReadKey(true).Key == ConsoleKey.Enter)
                 {
                     break;
                 }
