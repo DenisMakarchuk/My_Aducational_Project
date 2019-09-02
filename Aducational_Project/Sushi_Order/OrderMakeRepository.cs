@@ -7,12 +7,61 @@ using SushiMenu;
 
 namespace Sushi_Order
 {
-    class OrderRepository : IOrderRepository
+    class OrderMakeRepository : IOrderMakeRepository
     {
-        public static List<Sushi> sushiOrder = new List<Sushi>();
+        public  List<Sushi> sushiOrder = new List<Sushi>();
 
         public void AddSushiInOrder(Sushi sushi)
         {
+            float amountOfSushi = 0.0f;
+
+            if (sushi.HalfOrFull)
+            {
+                do
+                {
+                    Console.WriteLine($"How much of {sushi.Name} whoud you like add to order? You can get a helf of them.");
+                    amountOfSushi = Convert.ToSingle(Console.ReadLine());
+
+                    if (amountOfSushi == 0)
+                    {
+                        Console.WriteLine("You added no sushi of this kind!");
+                        return;
+                    }
+
+                    if (amountOfSushi % 0.5f == 0)
+                    {
+                        break;
+                    }
+                    Console.WriteLine("Your can add only multiple of half this kind of sushi! Try agein.");
+                }
+                while (true);
+
+            }
+            else
+            {
+                do
+                {
+                    Console.WriteLine($"How much of {sushi.Name} whoud you like add to order? You can't get a helf of them.");
+                    amountOfSushi = Convert.ToSingle(Console.ReadLine());
+
+                    if (amountOfSushi == 0)
+                    {
+                        Console.WriteLine("You added no sushi of this kind!");
+                        return;
+                    }
+
+                    if (amountOfSushi%1 == 0)
+                    {
+                        break;
+                    }
+                    Console.WriteLine("Your can add only whole this kind of sushi! Try agein.");
+                }
+                while (true);
+            }
+
+            sushi.Things = Convert.ToInt32(sushi.Things * amountOfSushi);
+            sushi.Cost = sushi.Cost * amountOfSushi;
+
             sushiOrder.Add(sushi);
         }
 
@@ -50,14 +99,7 @@ namespace Sushi_Order
 
                 foreach (var item in sushiOrder)
                 {
-                    if (item.HalfOrFull)
-                    {
-                        Console.WriteLine("{0}\t{1} g.\t{2: 0.00} BYN.\t{3} pieces\tYou can get a half.", item.Name, item.Weight, item.Cost, item.Things);
-                    }
-                    else
-                    {
-                        Console.WriteLine("{0}\t{1} g.\t{2: 0.00} BYN.\t{3} pieces\tYou can't get a half", item.Name, item.Weight, item.Cost, item.Things);
-                    }
+                    Console.WriteLine("{0}\t{1} g.\t{2: 0.00} BYN.\t{3} pieces.", item.Name, item.Weight, item.Cost, item.Things);
                 }
             }
             else

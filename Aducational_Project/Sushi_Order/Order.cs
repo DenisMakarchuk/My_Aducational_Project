@@ -9,6 +9,10 @@ namespace Sushi_Order
 {
     class Order
     {
+        //public static List<Sushi> OrderSushi = new List<Sushi>();
+
+        public int Id { get; set; }
+
         public string Name { get; set; }
 
         public int PhoneNumber { get; set; }
@@ -17,14 +21,14 @@ namespace Sushi_Order
 
         public List<Sushi> OrderSushi { get; set; }
 
-        public int TotalSum { get; set; }
+        public float TotalSum { get; set; }
 
-        public Order (string name, int phone, string address, List<Sushi> order, int sum)
+        public Order (string name, int phone, string address, List<Sushi> sushiOrder, float sum)
         {
             Name = name;
             PhoneNumber = phone;
             Address = address;
-            OrderSushi = order;
+            OrderSushi = sushiOrder;
             TotalSum = sum;
         }
     }

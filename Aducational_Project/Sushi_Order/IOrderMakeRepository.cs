@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sushi_Order
 {
-    interface IOrderRepository
+    interface IOrderMakeRepository
     {
         void AddSushiInOrder(Sushi sushi);
 
