@@ -43,10 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IOrderRepository.cs" />
+    <Compile Include="IOrderMakeRepository.cs" />
+    <Compile Include="IOrdersRepo.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderMaker.cs" />
-    <Compile Include="OrderRepository.cs" />
+    <Compile Include="OrderMakeRepository.cs" />
+    <Compile Include="OrdersRepo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Speak.cs" />

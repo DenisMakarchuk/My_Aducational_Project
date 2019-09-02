@@ -17,9 +17,9 @@ namespace Sushi_Order
 
             OrderMaker newOrder = new OrderMaker();
             newOrder.MakeOrder(sushiRepository);
+            //newOrder.OrderBuilder(newOrder.orderRepository);
 
 
-            //Speak.SushiInfo(sushiRepository.GetSushiByName("Philadelphia"));
 
             Console.Read();
         }

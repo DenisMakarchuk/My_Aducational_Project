@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SushiMenu
 {
-    interface IMenu
+    interface IMenu //If we need add anythin else into menu
     {
         string Name { get; set; }
 
