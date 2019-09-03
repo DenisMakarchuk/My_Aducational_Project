@@ -13,7 +13,7 @@ namespace Sushi_Order
 
         void GetSushisInOrder();
 
-        void UpdateSushiInOrder(int id, Sushi sushi);
+        void UpdateSushiInOrder(int id, SushiRepository sushis);
 
         void DeleteSushiFromOrder(int id);
     }
