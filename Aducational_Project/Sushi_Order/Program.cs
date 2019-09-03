@@ -12,17 +12,31 @@ namespace Sushi_Order
         static void Main(string[] args)
         {
             SushiRepository sushiRepository = new SushiRepository();
-
             sushiRepository = Menu.MenuMaker(sushiRepository);
 
+            OrdersRepo orders = new OrdersRepo();
+
+            do
+            {
+                orders.AddOrder(MakeNewOrder(sushiRepository));
+                Console.WriteLine("Press 'ENTER' if you need add one more order or anything else if not");
+            }
+            while (Console.ReadKey(true).Key == ConsoleKey.Enter);
+
+            Console.Read();
+        }
+
+        static Order MakeNewOrder(SushiRepository sushiRepository)
+        {
             OrderMaker newOrder = new OrderMaker();
             newOrder.MakeOrder(sushiRepository);
 
             Order order = newOrder.OrderBuilder(newOrder.orderRepository);
 
+            newOrder.OrderIsMakedEvent += (string name) => {Console.WriteLine($"{name}, your order is maked!");};
+            newOrder.IsMaked(order);
 
-
-            Console.Read();
+            return order;
         }
     }
 }

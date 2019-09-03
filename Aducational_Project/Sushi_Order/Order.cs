@@ -7,8 +7,21 @@ using System.Threading.Tasks;
 
 namespace Sushi_Order
 {
+    enum TheDayOfWeek
+    {
+        Monday = 1,
+        Tuesday,
+        Wednesday,
+        Thursday,
+        Friday,
+        Saturday,
+        Sunday
+    }
+
     class Order
     {
+        public TheDayOfWeek dayOfWeek { get; set; }
+
         public DateTime dateTime = DateTime.Now.ToLocalTime();
 
         public int Id { get; set; }

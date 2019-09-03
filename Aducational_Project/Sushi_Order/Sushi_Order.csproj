@@ -51,6 +51,7 @@
     <Compile Include="OrdersRepo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SeeOrderExtantions.cs" />
     <Compile Include="Speak.cs" />
   </ItemGroup>
   <ItemGroup>

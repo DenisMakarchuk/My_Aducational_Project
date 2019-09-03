@@ -1,5 +1,6 @@
 ﻿using System;
 using SushiMenu;
+using System.Timers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,8 @@ namespace Sushi_Order
 {
     class OrderMaker
     {
+        public event Action<string> OrderIsMakedEvent;
+
         public OrderMakeRepository orderRepository = new OrderMakeRepository();
 
         public OrderMakeRepository MakeOrder(SushiRepository sushis)
@@ -59,59 +62,78 @@ namespace Sushi_Order
 
         public Order OrderBuilder(OrderMakeRepository orderRepository)
         {
+
             string name = string.Empty, address = string.Empty;
             int phone = 0;
 
             do
             {
-                try
+                do
                 {
-                    Console.WriteLine("Enter your firstname.");
-                    name = Console.ReadLine();
+                    try
+                    {
+                        Console.WriteLine("Enter your firstname.");
+                        name = Console.ReadLine();
+                    }
+                    catch /*(Exception ex)*/
+                    {
+                        Console.WriteLine("Incorrect data entry \nTry agein.");
+                        continue;
+                    }
+                    break;
                 }
-                catch /*(Exception ex)*/
-                {
-                    Console.WriteLine("Incorrect data entry \nTry agein.");
-                    continue;
-                }
-                break;
-            }
-            while (true);
+                while (true);
 
-            do
-            {
-                try
+                do
                 {
-                    Console.WriteLine("Enter your phine number.");
-                    phone = Convert.ToInt32(Console.ReadLine());
+                    try
+                    {
+                        Console.WriteLine("Enter your phone number.");
+                        phone = Convert.ToInt32(Console.ReadLine());
+                    }
+                    catch /*(Exception ex)*/
+                    {
+                        Console.WriteLine("Incorrect data entry \nTry agein.");
+                        continue;
+                    }
+                    break;
                 }
-                catch /*(Exception ex)*/
-                {
-                    Console.WriteLine("Incorrect data entry \nTry agein.");
-                    continue;
-                }
-                break;
-            }
-            while (true);
+                while (true);
 
-            do
-            {
-                try
+                do
                 {
-                    Console.WriteLine("Enter your delivery address.");
-                    address = Console.ReadLine();
+                    try
+                    {
+                        Console.WriteLine("Enter your delivery address.");
+                        address = Console.ReadLine();
+                    }
+                    catch /*(Exception ex)*/
+                    {
+                        Console.WriteLine("Incorrect data entry \nTry agein.");
+                        continue;
+                    }
+                    break;
                 }
-                catch /*(Exception ex)*/
-                {
-                    Console.WriteLine("Incorrect data entry \nTry agein.");
-                    continue;
-                }
-                break;
+                while (true);
+
+                Console.WriteLine();
+                Console.WriteLine($"It's your order:"
+                                  + $"\nYour name: {name}"
+                                  + $"\nYour phone number: {phone}"
+                                  + $"\nYour address: {address}"
+                                  + $"\nSushis inyYour order:");
+                SeeOrderExtantions.SeeTheSushiInTheOrderExtention(orderRepository.sushiOrder);
+
+                Console.WriteLine("Press 'ENTER' if everything correct or anything else if not");
             }
-            while (true);
+            while (Console.ReadKey(true).Key != ConsoleKey.Enter);
 
             float sum = SumCounter(orderRepository);
             Order order = new Order(name, phone, address, orderRepository.sushiOrder, sum);
+
+            order.dayOfWeek = (TheDayOfWeek)DateTime.Now.DayOfWeek;
+
+            //IsMaked(order);
 
             return order;
         }
@@ -192,6 +214,28 @@ namespace Sushi_Order
             }
 
             return true;
+        }
+
+        public void IsMaked(Order order)
+        {
+            string name = new string(order.Name.ToCharArray());
+
+            if (OrderIsMakedEvent != null)
+            {
+                OrderIsMakedEvent(name);
+            }
+
+            Timer timer = new Timer(); 
+            timer.Interval = 10000;
+            timer.Elapsed += timer_Elapsed;
+            timer.Start();
+            Console.Read();
+            timer.Dispose();
+
+            void timer_Elapsed(object sender, EventArgs e)
+            {
+                OrderIsMakedEvent(name);
+            }
         }
     }
 }
