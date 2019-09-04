@@ -1,6 +1,7 @@
 ﻿using System;
-using SushiMenu;
+using MenuSushi;
 using System.Collections.Generic;
+using Logs;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;

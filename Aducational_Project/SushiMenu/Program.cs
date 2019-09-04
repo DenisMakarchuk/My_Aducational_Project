@@ -10,9 +10,7 @@ namespace SushiMenu
     {
         static void Main(string[] args)
         {
-            //SushiRepository sushiRepository = new SushiRepository();
 
-            //sushiRepository = MenuMaker(sushiRepository);
         }
 
         public static SushiRepository MenuMaker(SushiRepository sushiRepository)

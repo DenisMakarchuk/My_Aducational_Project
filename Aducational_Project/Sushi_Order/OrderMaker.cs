@@ -1,9 +1,10 @@
 ﻿using System;
-using SushiMenu;
+using MenuSushi;
 using System.Timers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Logs;
 using System.Threading.Tasks;
 
 namespace Sushi_Order
@@ -27,9 +28,12 @@ namespace Sushi_Order
                     {
                         AddSushiOrNothing(sushis);
                     }
-                    catch
+                    catch (Exception ex)
                     {
                         Console.WriteLine("You must enter the ID number of kind of sushi");
+
+                        MyLog.Logs($"Entered invalid sushi ID! Repiting going!\n{ex.Message}\n{ex.StackTrace}");
+
                         continue;
                     }
 
@@ -75,9 +79,12 @@ namespace Sushi_Order
                         Console.WriteLine("Enter your firstname.");
                         name = Console.ReadLine();
                     }
-                    catch /*(Exception ex)*/
+                    catch (Exception ex)
                     {
                         Console.WriteLine("Incorrect data entry \nTry agein.");
+
+                        MyLog.Logs($"Entered invalid name! Repiting going!\n{ex.Message}\n{ex.StackTrace}");
+
                         continue;
                     }
                     break;
@@ -91,9 +98,12 @@ namespace Sushi_Order
                         Console.WriteLine("Enter your phone number.");
                         phone = Convert.ToInt32(Console.ReadLine());
                     }
-                    catch /*(Exception ex)*/
+                    catch (Exception ex)
                     {
                         Console.WriteLine("Incorrect data entry \nTry agein.");
+
+                        MyLog.Logs($"Entered invalid phone number! Repiting going!\n{ex.Message}\n{ex.StackTrace}");
+
                         continue;
                     }
                     break;
@@ -107,9 +117,12 @@ namespace Sushi_Order
                         Console.WriteLine("Enter your delivery address.");
                         address = Console.ReadLine();
                     }
-                    catch /*(Exception ex)*/
+                    catch (Exception ex)
                     {
                         Console.WriteLine("Incorrect data entry \nTry agein.");
+
+                        MyLog.Logs($"Entered invalid addpess! Repiting going!\n{ex.Message}\n{ex.StackTrace}");
+
                         continue;
                     }
                     break;
@@ -132,8 +145,6 @@ namespace Sushi_Order
             Order order = new Order(name, phone, address, orderRepository.sushiOrder, sum);
 
             order.dayOfWeek = (TheDayOfWeek)DateTime.Now.DayOfWeek;
-
-            //IsMaked(order);
 
             return order;
         }
@@ -163,6 +174,8 @@ namespace Sushi_Order
                 Sushi tempSushi = new Sushi(sushi.Name, sushi.Weight, sushi.Cost, sushi.Things, sushi.HalfOrFull);
                 tempSushi.Id = idSushiToOrder;
 
+                MyLog.Logs("orderRepository.AddSushiInOrder started");
+
                 orderRepository.AddSushiInOrder(tempSushi);
             }
         }
@@ -185,9 +198,12 @@ namespace Sushi_Order
 
                     return false;
                 }
-                catch /*(Exception ex)*/
+                catch (Exception ex)
                 {
                     Console.WriteLine("Incorrect data entry \nYou must enter the ID number of kind of sushi");
+
+                    MyLog.Logs($"Entered invalid sushi ID! Repiting going!\n{ex.Message}\n{ex.StackTrace}");
+
                     return false;
                 }
             }
@@ -206,9 +222,12 @@ namespace Sushi_Order
                     orderRepository.GetSushisInOrder();
                     Console.WriteLine("The order price is {0: 0.00}", SumCounter(orderRepository));
                 }
-                catch /*(Exception ex)*/
+                catch (Exception ex)
                 {
                     Console.WriteLine("Incorrect data entry \nYou must enter the ID number of kind of sushi");
+
+                    MyLog.Logs($"Entered invalid sushi ID! Repiting going!\n{ex.Message}\n{ex.StackTrace}");
+
                     return false;
                 }
             }
@@ -216,22 +235,26 @@ namespace Sushi_Order
             return true;
         }
 
-        public void IsMaked(Order order)
+        public void IsMaked(Order order, long timeIntervalSeconds)
         {
             string name = new string(order.Name.ToCharArray());
             DateTime dateTime = DateTime.Now;
 
             Timer timer = new Timer();
-            timer.Interval = 20000;
+            timer.Interval = timeIntervalSeconds * 1000;
             timer.Start();
+
+            MyLog.Logs($"Timer started for {name}");
+
             timer.Elapsed += timer_Elapsed;
 
             void timer_Elapsed(object sender, EventArgs e)
             {
-                if (DateTime.Now >= dateTime.AddMilliseconds(20000) && OrderIsMakedEvent != null)
+                if (DateTime.Now >= dateTime.AddMilliseconds(timer.Interval) && OrderIsMakedEvent != null)
                 {
                     OrderIsMakedEvent(name);
                     timer.Dispose();
+                    MyLog.Logs($"Timer finished for {name}");
                 }
             }
 

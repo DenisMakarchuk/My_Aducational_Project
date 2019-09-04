@@ -58,9 +58,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SushiMenu\SushiMenu.csproj">
-      <Project>{d3d395a9-0227-4ef8-afb3-c6e07219026d}</Project>
-      <Name>SushiMenu</Name>
+    <ProjectReference Include="..\Logs\Logs.csproj">
+      <Project>{b12c6636-c48c-4c2c-bf7b-b81ce0ac53b4}</Project>
+      <Name>Logs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MenuSushi\MenuSushi.csproj">
+      <Project>{0781081f-07c6-4ba3-a575-ad5489b77904}</Project>
+      <Name>MenuSushi</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

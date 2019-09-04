@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SushiMenu;
+using MenuSushi;
+using Logs;
 
 namespace Sushi_Order
 {
@@ -42,9 +43,12 @@ namespace Sushi_Order
                         }
                         Console.WriteLine("Your can add only multiple of half this kind of sushi! Try agein.");
                     }
-                    catch /*(Exception ex)*/
+                    catch (Exception ex)
                     {
                         Console.WriteLine("Invalid data entered\nTry agein");
+
+                        MyLog.Logs($"Entered invalid quantity of sushi!\n{ex.Message}\n{ex.StackTrace}");
+
                         continue;
                     }
                 }
@@ -79,9 +83,12 @@ namespace Sushi_Order
                         }
                         Console.WriteLine("Your can add only whole this kind of sushi! Try agein.");
                     }
-                    catch /*(Exception ex)*/
+                    catch (Exception ex)
                     {
                         Console.WriteLine("Invalid data entered\nTry agein");
+
+                        MyLog.Logs($"Entered invalid quantity of sushi!\n{ex.Message}\n{ex.StackTrace}");
+
                         continue;
                     }
                 }
@@ -98,9 +105,11 @@ namespace Sushi_Order
             {
                 var tempSushi = sushiOrder.SingleOrDefault(item => item.Id == sushi.Id);
             }
-            catch
+            catch (Exception ex)
             {
                 DeleteSushiFromOrder(sushi.Id);
+
+                MyLog.Logs($"DeleteSushiFromOrder done!\n{ex.Message}\n{ex.StackTrace}");
             }
         }
 
@@ -161,9 +170,11 @@ namespace Sushi_Order
 
                 AddSushiInOrder(tempSushi);
             }
-            catch 
+            catch (Exception ex)
             {
                 Console.WriteLine("You don't have eny sushi whith this name in order!");
+
+                MyLog.Logs($"Entered invalid sushi ID! Repiting going!\n{ex.Message}\n{ex.StackTrace}");
             }
         }
     }
