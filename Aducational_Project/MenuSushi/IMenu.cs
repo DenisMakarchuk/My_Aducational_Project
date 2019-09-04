@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SushiMenu
+namespace MenuSushi
 {
-    interface IMenu
+    interface IMenu //If we need add anythin else into menu
     {
+        int Id { get; set; }
+
         string Name { get; set; }
 
         float Weight { get; set; }

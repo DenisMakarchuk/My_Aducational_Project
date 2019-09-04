@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using SushiMenu;
+using MenuSushi;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Logs;
 
 namespace Sushi_Order
 {
