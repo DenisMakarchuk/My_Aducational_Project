@@ -28,12 +28,16 @@ namespace Sushi_Order
 
         static Order MakeNewOrder(SushiRepository sushiRepository)
         {
+
             OrderMaker newOrder = new OrderMaker();
+            newOrder.OrderIsMakedEvent += (string name) => { Console.WriteLine($"{name}, your order is maked!"); };
+
             newOrder.MakeOrder(sushiRepository);
+
 
             Order order = newOrder.OrderBuilder(newOrder.orderRepository);
 
-            newOrder.OrderIsMakedEvent += (string name) => {Console.WriteLine($"{name}, your order is maked!");};
+            //newOrder.OrderIsMakedEvent += (string name) => {Console.WriteLine($"{name}, your order is maked!");};
             newOrder.IsMaked(order);
 
             return order;
