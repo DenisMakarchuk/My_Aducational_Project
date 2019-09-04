@@ -22,7 +22,6 @@ namespace MenuSushi
             Sushi gunkanTekka = new Sushi("Gunkans tekka", 80.0f, 6.50f, 2, false);
             sushiRepository.CreateSushi(gunkanTekka);
 
-
             return sushiRepository;
         }
     }

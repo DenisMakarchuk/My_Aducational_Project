@@ -124,13 +124,17 @@ namespace Sushi_Order
                 }
                 sushiOrder.Remove(sushi);
             }
-            catch (NullReferenceException)
+            catch (NullReferenceException ex)
             {
                 Console.WriteLine("You don't have eny sushi whith this name in order!");
+
+                MyLog.Logs($"{ex.Message}\n{ex.StackTrace}");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 Console.WriteLine("You have more than 1 order this kind of sushi in your order.\nWhill be deleted the first of them!");
+
+                MyLog.Logs($"Entered more than 1 order this kind of sushi!\n{ex.Message}\n{ex.StackTrace}");
 
                 var sushi = sushiOrder.FirstOrDefault(item => item.Id == id);
                 sushiOrder.Remove(sushi);
@@ -140,6 +144,7 @@ namespace Sushi_Order
         public void GetSushisInOrder()
         {
             Console.WriteLine("Whoud you like to see your order?\nPress 'ENTER' if yes \nPress anything else if not.");
+
             switch (Console.ReadKey(true).Key)
             {
                 case ConsoleKey.Enter:
