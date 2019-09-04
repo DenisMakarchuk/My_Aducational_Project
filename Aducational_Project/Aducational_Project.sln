@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sushi_Order", "Sushi_Order\Sushi_Order.csproj", "{8719715D-0140-439F-8661-EE25FBF85BF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logs", "Logs\Logs.csproj", "{B12C6636-C48C-4C2C-BF7B-B81CE0AC53B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MenuSushi", "MenuSushi\MenuSushi.csproj", "{0781081F-07C6-4BA3-A575-AD5489B77904}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8719715D-0140-439F-8661-EE25FBF85BF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8719715D-0140-439F-8661-EE25FBF85BF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8719715D-0140-439F-8661-EE25FBF85BF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8719715D-0140-439F-8661-EE25FBF85BF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B12C6636-C48C-4C2C-BF7B-B81CE0AC53B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B12C6636-C48C-4C2C-BF7B-B81CE0AC53B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B12C6636-C48C-4C2C-BF7B-B81CE0AC53B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B12C6636-C48C-4C2C-BF7B-B81CE0AC53B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0781081F-07C6-4BA3-A575-AD5489B77904}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0781081F-07C6-4BA3-A575-AD5489B77904}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0781081F-07C6-4BA3-A575-AD5489B77904}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0781081F-07C6-4BA3-A575-AD5489B77904}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3E7D1A94-C034-440B-A9A3-6EFDEA3C877F}
+	EndGlobalSection
+EndGlobal
