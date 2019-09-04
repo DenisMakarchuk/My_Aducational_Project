@@ -28,7 +28,7 @@ namespace Sushi_Order
 
         public string Name { get; set; }
 
-        public int PhoneNumber { get; set; }
+        public long PhoneNumber { get; set; }
 
         public string Address { get; set; }
 
@@ -36,7 +36,7 @@ namespace Sushi_Order
 
         public float TotalSum { get; set; }
 
-        public Order (string name, int phone, string address, List<Sushi> sushiOrder, float sum)
+        public Order (string name, long phone, string address, List<Sushi> sushiOrder, float sum)
         {
             Name = name;
             PhoneNumber = phone;

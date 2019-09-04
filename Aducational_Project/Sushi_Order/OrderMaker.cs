@@ -64,7 +64,7 @@ namespace Sushi_Order
         {
 
             string name = string.Empty, address = string.Empty;
-            int phone = 0;
+            long phone = 0;
 
             do
             {
@@ -219,23 +219,22 @@ namespace Sushi_Order
         public void IsMaked(Order order)
         {
             string name = new string(order.Name.ToCharArray());
+            DateTime dateTime = DateTime.Now;
 
-            if (OrderIsMakedEvent != null)
-            {
-                OrderIsMakedEvent(name);
-            }
-
-            Timer timer = new Timer(); 
-            timer.Interval = 10000;
-            timer.Elapsed += timer_Elapsed;
+            Timer timer = new Timer();
+            timer.Interval = 20000;
             timer.Start();
-            Console.Read();
-            timer.Dispose();
+            timer.Elapsed += timer_Elapsed;
 
             void timer_Elapsed(object sender, EventArgs e)
             {
-                OrderIsMakedEvent(name);
+                if (DateTime.Now >= dateTime.AddMilliseconds(20000) && OrderIsMakedEvent != null)
+                {
+                    OrderIsMakedEvent(name);
+                    timer.Dispose();
+                }
             }
+
         }
     }
 }
