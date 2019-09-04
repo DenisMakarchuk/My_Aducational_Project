@@ -1,4 +1,3 @@
-# My_Aducational_Project
 <h1 align = "center">This is My_Aducational_Project</h1>
 <hr>
 <p align="justify">
