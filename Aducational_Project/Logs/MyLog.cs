@@ -13,7 +13,6 @@ namespace Logs
 
         public static void Logs(object obj)
         {
-            //DirectoryInfo directory = new DirectoryInfo("C:\MyLogs");
             string fileName = directory + "\\logs.txt";
             int counter = 2;
 
@@ -21,12 +20,20 @@ namespace Logs
             StreamWriter sw = new StreamWriter(aFile);
             sw.Close();
 
-            if (File.ReadAllBytes(fileName).Length > 1024 * 1024)
+            do
             {
-                fileName = directory + "\\logs" + counter + ".txt";
+                if (File.ReadAllBytes(fileName).Length > 1024 * 1024)
+                {
+                    fileName = directory + "\\logs" + counter + ".txt";
 
-                counter++;
+                    counter++;
+                }
+                else
+                {
+                    break;
+                }
             }
+            while (true);
 
             aFile = new FileStream(fileName, FileMode.OpenOrCreate);
             sw = new StreamWriter(aFile);
